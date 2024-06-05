@@ -20,7 +20,7 @@ public class CatalogService {
         UserRatings userRatings = restTemplate.getForObject("http://RATING-DATA-SERVICE/ratingData/users/" + userId, UserRatings.class);
 
         return userRatings.getUserRatings().stream().map(rating -> {
-            Movie movie = restTemplate.getForObject("http://MOVIE-INFO-SERVICE/movieInfo/" + userId, Movie.class);
+            Movie movie = restTemplate.getForObject("http://MOVIE-INFO-SERVICE/movieInfo/" + rating.getMovieId(), Movie.class);
 //            Movie movie = webClientBuilder
 //                    .build()
 //                    .get()
